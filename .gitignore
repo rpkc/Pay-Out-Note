@@ -3,4 +3,3 @@
 /server/package-lock.json
 /server/node_modules
 /server/.env
-/server/db/db.schema.js
