@@ -1,3 +1,10 @@
+/**
+ * 
+ * This file connects to mongoDB Atlas Console
+ * 
+ */
+
+
 import mongoose from "mongoose";
 
 export const connectDB=()=>{
