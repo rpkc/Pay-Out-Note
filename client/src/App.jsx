@@ -5,6 +5,7 @@ import axios from "axios";
 
 function App() {
   const [notes,setNotes]=useState([]);
+  const [total,setTotal]=useState(0);
   // var dataSetIntoTable=[]
   
 
@@ -12,19 +13,15 @@ function App() {
 
   useEffect(()=>{
     axios.get('http://localhost:5000/').then((data)=>{
-      // setNotes(data.data.data);
-      //console.log(data.data.data);
       setNotes(data.data.data);
+    }).catch((err)=>{
+      console.log(err.message);
+    })
+  },[])
 
-// const dataSetIntoTable =()=> notes.map((data)=>{
-//   return(<tr>
-//     <td>{data.topic}</td>
-//     <td>{data.amount}</td>
-//     <td>{data.note}</td>
-//   </tr>)
-// })
-
-
+  useEffect(()=>{
+    axios.get('http://localhost:5000/sum').then((data)=>{
+      setTotal(data.data.data);
     }).catch((err)=>{
       console.log(err.message);
     })
@@ -34,6 +31,7 @@ function App() {
   return (
     <>
       <div>
+        <h1>{total}</h1>
         <table>
           <tr>
             <th>Topic</th>

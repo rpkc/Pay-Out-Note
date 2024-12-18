@@ -4,7 +4,7 @@ import { addNote,showNotes,updateNote,deleteNote,totalAmount } from './db.contro
 const dbRoute=express.Router();
 
 dbRoute.post('/',addNote);
-dbRoute.post('/sum',totalAmount);
+dbRoute.get('/sum',totalAmount);
 dbRoute.get('/',showNotes);
 dbRoute.put('/:id',updateNote);
 dbRoute.delete('/:id',deleteNote);
