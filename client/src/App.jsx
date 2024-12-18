@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import axios from "axios";
 
 
 function App() {
-  const [count, setCount] = useState(0);
-  // const [notes,setNotes]=useState([]);
+  const [notes,setNotes]=useState([]);
+  // var dataSetIntoTable=[]
   
 
 
@@ -15,7 +13,18 @@ function App() {
   useEffect(()=>{
     axios.get('http://localhost:5000/').then((data)=>{
       // setNotes(data.data.data);
-      console.log(data.data.data);
+      //console.log(data.data.data);
+      setNotes(data.data.data);
+
+// const dataSetIntoTable =()=> notes.map((data)=>{
+//   return(<tr>
+//     <td>{data.topic}</td>
+//     <td>{data.amount}</td>
+//     <td>{data.note}</td>
+//   </tr>)
+// })
+
+
     }).catch((err)=>{
       console.log(err.message);
     })
@@ -26,11 +35,26 @@ function App() {
     <>
       <div>
         <table>
-          <th>
-            <td>Topic</td>
-            <td>Amount</td>
-            <td>Notes</td>
-          </th>
+          <tr>
+            <th>Topic</th>
+            <th>Amount</th>
+            <th>Notes</th>
+          </tr>
+          {
+            notes.map((data,i)=>{
+              return(<tr key={i}>
+                <td>
+                  {data.topic}
+                </td>
+                <td>
+                ₹ {data.amount}
+                </td>
+                <td>
+                  {data.note}
+                </td>
+              </tr>)
+            })
+          }
         </table>
       </div>
     </>
