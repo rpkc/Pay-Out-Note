@@ -1,4 +1,4 @@
-import express, { application } from "express";
+import express from "express";
 import { connectDB } from "./db/db.connect.js";
 import dbRoute from "./db/db.router.js";
 
@@ -6,11 +6,11 @@ const server = express();
 server.use(express.json());
 
 
-server.use('/',dbRoute);
+server.use('',dbRoute);
 
-server.get('/',(req,res)=>{
-    res.send("Hi from server");
-})
+// server.get('/',(req,res)=>{
+//     res.send("Hi from server");
+// })
 
 
 // server.post('/',async (req,res)=>{

@@ -1,7 +1,6 @@
-import mongoose from "mongoose";
 import Notes from "./db.schema.js";
 
-export const addData=async (req,res)=>{
+export const addNote=async (req,res)=>{
     var NotedData=Notes(req.body);
     try {
         await NotedData.save();
@@ -10,3 +9,18 @@ export const addData=async (req,res)=>{
         res.status(500).json({success:false,message:error.message});
     }
 }
+
+export const showNotes=async(req,res)=>{
+    
+    try {
+    var NotesData=await Notes.find({});
+    res.status(200).json({success:true,data:NotesData});
+        
+    } catch (error) {
+        res.status(500).json({success:false,message:error.message});
+    }
+
+}
+
+
+// export const addNote;

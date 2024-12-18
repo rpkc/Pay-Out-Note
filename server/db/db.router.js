@@ -1,10 +1,10 @@
 import express from 'express';
-import { addData } from './db.controller.js';
+import { addNote,showNotes } from './db.controller.js';
 
 const dbRoute=express.Router();
 
-dbRoute.post('/',addData);
-
+dbRoute.post('/',addNote);
+dbRoute.get('/',showNotes);
 
 
 export default dbRoute;
