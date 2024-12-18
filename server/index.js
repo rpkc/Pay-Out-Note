@@ -6,7 +6,7 @@ const server = express();
 server.use(express.json());
 
 
-server.use('',dbRoute);
+server.use('/',dbRoute);
 
 // server.get('/',(req,res)=>{
 //     res.send("Hi from server");
