@@ -1,6 +1,23 @@
 import mongoose from "mongoose";
 import Notes from "./db.schema.js";
 
+
+export const totalAmount=async (req,res)=>{
+    Notes.aggregate([
+        { $group: { _id: null, total: { $sum: '$amount' } } }
+      ])
+      .then(result => {
+        if (result.length > 0) {
+          res.status(200).json({success:true,data:result[0].total}) 
+        } else {
+            res.status(404).json({success:false,data:0}) 
+        }
+      })
+      .catch(err => {
+        res.status(500).json({success:false,message:err.message}) 
+      });
+}
+
 export const addNote=async (req,res)=>{
     var NotedData=Notes(req.body);
     try {
