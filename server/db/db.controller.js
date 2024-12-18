@@ -12,7 +12,7 @@ export const addNote=async (req,res)=>{
 }
 
 export const showNotes=async(req,res)=>{
-    
+    res.header('Access-Control-Allow-Origin', '*')
     try {
     var NotesData=await Notes.find({});
     res.status(200).json({success:true,data:NotesData});
