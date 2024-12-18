@@ -6,9 +6,9 @@
 
 import mongoose from "mongoose";
 
-const [Schema,model]=mongoose;
+// const [Schema,model]=mongoose;
 
-const noteSchema=new Schema({
+const noteSchema=new mongoose.Schema({
     "topic":String,
     "amount":Number,
     "note":String
@@ -16,6 +16,6 @@ const noteSchema=new Schema({
     timestamps:true
 });
 
-const Notes = model('Notes',noteSchema);
+const Notes = mongoose.model('Notes',noteSchema);
 
 export default Notes;
