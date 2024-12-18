@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Notes from "./db.schema.js";
 
 export const addNote=async (req,res)=>{
@@ -30,10 +31,10 @@ export const updateNote=async(req,res)=>{
 	}
 
     try {
-        const updateNotes= Notes.findByIdAndUpdate(id,value,{new:true});
+        const updateNotes= await Notes.findByIdAndUpdate(id,value,{new:true});
         res.status(200).json({success:true,data:updateNotes});
     } catch (error) {
-        res.status(500).json({success:true,message:error.message});
+        res.status(500).json({success:false,message:error.message});
     }
 }
 
@@ -44,7 +45,7 @@ export const deleteNote=async (req,res)=>{
     
     try {
     await Notes.findByIdAndDelete(id);
-    res.status(200).json({success:true,data:updateNotes});
+    res.status(200).json({success:false,message:"Note Deleted"});
 
     } catch (error) {
         res.status(500).json({success:true,message:error.message});
