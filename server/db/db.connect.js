@@ -4,11 +4,10 @@
  * 
  */
 
-
 import mongoose from "mongoose";
 
 export const connectDB=()=>{
-    mongoose.connect('mongodb+srv://rpkc:1234@cluster0.xbfml.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
+    mongoose.connect(process.env.MONGO_DB_URI)
     .then(()=>{
         console.log("DB Connected");// if connected properly
     }).catch((err)=>{
