@@ -17,7 +17,7 @@ function App() {
 
   function edit(state,action)
   {
-    console.log(action.type);
+    //console.log(action.type);
     axios.delete("http://localhost:5000/"+action.type)
       .then(()=>{
         setHit(hit+1);
