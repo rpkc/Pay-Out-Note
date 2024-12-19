@@ -3,7 +3,7 @@ import Notes from "./db.schema.js";
 
 
 export const totalAmount=async (req,res)=>{
-    res.header('Access-Control-Allow-Origin', '*')
+    // res.header('Access-Control-Allow-Origin', '*')
     await Notes.aggregate([
         { $group: { _id: null, total: { $sum: '$amount' } } }
       ])
@@ -31,7 +31,7 @@ export const addNote=async (req,res)=>{
 }
 
 export const showNotes=async(req,res)=>{
-    res.header('Access-Control-Allow-Origin', '*')
+    // res.header('Access-Control-Allow-Origin', '*')
     try {
     var NotesData=await Notes.find({});
     res.status(200).json({success:true,data:NotesData});
@@ -42,7 +42,7 @@ export const showNotes=async(req,res)=>{
 }
 
 export const updateNote=async(req,res)=>{
-    res.header('Access-Control-Allow-Origin', '*')
+    // res.header('Access-Control-Allow-Origin', '*')
     const {id}=req.params;
     const value=req.body;
 
@@ -59,7 +59,7 @@ export const updateNote=async(req,res)=>{
 }
 
 export const deleteNote=async (req,res)=>{
-    res.header('Access-Control-Allow-Origin', '*')
+    // res.header('Access-Control-Allow-Origin', '*')
     const {id}=req.params;
     if (!mongoose.Types.ObjectId.isValid(id)) {
 		return res.status(404).json({ success: false, message: "Invalid Product Id" });}
