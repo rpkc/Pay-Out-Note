@@ -20,8 +20,8 @@ function App() {
     console.log(action.type);
     axios.delete("http://localhost:5000/"+action.type)
       .then(()=>{
-        setHit(hit-1);
-        console.log("Data Deleted");
+        setHit(hit+1);
+        // console.log("Data Deleted");
       }).catch((err)=>{
         console.error(err.message);
       })
@@ -64,16 +64,11 @@ const addValue=()=>{
     })
   },[hit])
 
- var edit = () => { 
-    // Do whatever you want
-    console.log(updateRef.current.id)
-}
 
   return (
     <>
       <div>
         <h1>Pay Out Note</h1>
-        <h2>Total Spending: ₹ {total}</h2>
         <table>
           <tr>
             <th>Topic</th>
@@ -89,10 +84,10 @@ const addValue=()=>{
                 <td>
                   {data.topic}
                 </td>
-                <td contentEditable>
+                <td>
                 ₹ {data.amount}
                 </td>
-                <td contentEditable>
+                <td>
                   {data.note}
                 </td>
                 <td>
@@ -110,6 +105,7 @@ const addValue=()=>{
             
           </tr>
         </table>
+        <h2>Total Spending: ₹ {total}</h2>
       </div>
     </>
   )

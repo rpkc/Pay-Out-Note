@@ -11,7 +11,7 @@ export const totalAmount=async (req,res)=>{
         if (result.length > 0) {
           res.status(200).json({success:true,data:Number(result[0].total)}) 
         } else {
-            res.status(404).json({success:false,data:0}) 
+            res.status(200).json({success:false,data:0}) 
         }
       })
       .catch(err => {
